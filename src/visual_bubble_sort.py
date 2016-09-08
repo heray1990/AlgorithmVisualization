@@ -17,9 +17,11 @@ rects = ax.bar(xpos, ypos, alpha=0.4)
 
 def animate(i):
     if i > 0:
-        tmp = rects[i - 1].get_height()
-        rects[i - 1].set_height(rects[i].get_height())
-        rects[i].set_height(tmp)
+        if rects[i - 1].get_height() > rects[i].get_height():
+            tmp = rects[i - 1].get_height()
+            rects[i - 1].set_height(rects[i].get_height())
+            rects[i].set_height(tmp)
+
         rects[i - 1].set_color('b')
         rects[i].set_color('y')
     return ax,
