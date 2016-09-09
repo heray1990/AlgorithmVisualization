@@ -16,7 +16,7 @@ ypos = np.asarray(datalist)
 
 rects = ax.bar(xpos, ypos, alpha=0.4)
 
-def data_gen():
+def index_gen():
     for i in range(0, (length - 1)):
         for j in range(1, (length - i)):
             yield j
@@ -33,6 +33,6 @@ def animate(i):
 
     return ax,
 
-ani = animation.FuncAnimation(fig, animate, data_gen, repeat=False, blit=True)
+ani = animation.FuncAnimation(fig, animate, index_gen, repeat=False, blit=True)
 
 plt.show()
