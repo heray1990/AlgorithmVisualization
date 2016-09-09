@@ -18,6 +18,8 @@ def index_gen():
     for i in range(0, (length - 1)):
         for j in range(1, (length - i)):
             yield j
+    # A flag, represent the end of the sort.
+    yield -1
 
 def animate(i):
     if i > 0:
@@ -28,6 +30,9 @@ def animate(i):
 
         rects[i - 1].set_color('b')
         rects[i].set_color('y')
+    elif i == -1:
+        for rect in rects:
+            rect.set_color('b')
 
     return rects
 
@@ -47,7 +52,7 @@ if __name__ == '__main__':
     rects = ax.bar(xpos, ypos, alpha=0.4)
 
     ani = animation.FuncAnimation(fig, animate, index_gen,
-                                  init_func=init_animate, repeat=True,
+                                  init_func=init_animate, repeat=False,
                                   repeat_delay=1000)
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
