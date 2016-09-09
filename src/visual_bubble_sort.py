@@ -31,7 +31,7 @@ def animate(i):
         rects[i - 1].set_color('b')
         rects[i].set_color('y')
 
-    return ax,
+    return rects
 
 ani = animation.FuncAnimation(fig, animate, index_gen, repeat=False, blit=True)
 
