@@ -15,6 +15,17 @@ ypos = np.asarray(datalist)
 
 rects = ax.bar(xpos, ypos, alpha=0.4)
 
+def data_gen(i=0):
+    # i = 100 + 99 + ... + 2
+    i = (100 + 1) * 50 - 1
+    k = 100
+
+    while i > 0:
+        for j in range(0, k):
+            yield j
+        i -= k    
+        k -= 1
+
 def animate(i):
     if i > 0:
         if rects[i - 1].get_height() > rects[i].get_height():
@@ -26,6 +37,7 @@ def animate(i):
         rects[i].set_color('y')
     return ax,
 
-ani = animation.FuncAnimation(fig, animate, 100, repeat=False, blit=True)
+ani = animation.FuncAnimation(fig, animate, data_gen, repeat=False, blit=True,
+                              interval=1)
 
 plt.show()
