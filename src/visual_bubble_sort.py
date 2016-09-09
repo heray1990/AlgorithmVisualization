@@ -11,7 +11,6 @@ def init_animate():
     i = 0
     for rect in rects:
         rect.set_height(ypos[i])
-        rect.set_color('b')
         i += 1
 
 def index_gen():
@@ -52,8 +51,7 @@ if __name__ == '__main__':
     rects = ax.bar(xpos, ypos, alpha=0.4)
 
     ani = animation.FuncAnimation(fig, animate, index_gen,
-                                  init_func=init_animate, repeat=False,
-                                  repeat_delay=1000)
+                                  init_func=init_animate, repeat=False)
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
         ani.save('animation.gif', writer='imagemagick', fps=30)
