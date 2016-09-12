@@ -65,6 +65,6 @@ if __name__ == '__main__':
                                   save_count=save_cnt_gen())
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
-        ani.save('animation.gif', writer='imagemagick', fps=20, dpi=40)
+        ani.save('animation.gif', writer='imagemagick', fps=20, dpi=50)
     else:
         plt.show()
