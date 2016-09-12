@@ -17,8 +17,18 @@ def index_gen():
     for i in range(0, (length - 1)):
         for j in range(1, (length - i)):
             yield j
+
     # A flag, represent the end of the sort.
     yield -1
+
+def save_cnt_gen():
+    k = 1
+
+    for i in range(0, (length - 1)):
+        for j in range(1, (length - i)):
+            k += 1
+
+    return k
 
 def animate(i):
     if i > 0:
@@ -49,11 +59,12 @@ if __name__ == '__main__':
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
     rects = ax.bar(xpos, ypos, alpha=0.4)
-
-    ani = animation.FuncAnimation(fig, animate, index_gen,
-                                  init_func=init_animate, repeat=False)
+    
+    ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=True,
+                                  init_func=init_animate,
+                                  save_count=save_cnt_gen())
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
-        ani.save('animation.gif', writer='imagemagick', fps=30)
+        ani.save('animation.gif', writer='imagemagick', fps=15, dpi=50)
     else:
         plt.show()
