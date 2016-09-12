@@ -61,10 +61,10 @@ if __name__ == '__main__':
     rects = ax.bar(xpos, ypos, alpha=0.4)
     
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=True,
-                                  init_func=init_animate,
+                                  init_func=init_animate, interval=50,
                                   save_count=save_cnt_gen())
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
-        ani.save('animation.gif', writer='imagemagick', fps=15, dpi=50)
+        ani.save('animation.gif', writer='imagemagick', fps=20, dpi=40)
     else:
         plt.show()
