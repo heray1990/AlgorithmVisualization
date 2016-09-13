@@ -60,11 +60,11 @@ if __name__ == '__main__':
     ypos = np.asarray(datalist)
     rects = ax.bar(xpos, ypos, alpha=0.4)
     
-    ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=True,
-                                  init_func=init_animate, interval=50,
-                                  save_count=save_cnt_gen())
+    ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
+                                  init_func=init_animate, interval=50)
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
+        ani.save_count=save_cnt_gen()
         ani.save('animation.gif', writer='imagemagick', fps=20, dpi=50)
     else:
         plt.show()
