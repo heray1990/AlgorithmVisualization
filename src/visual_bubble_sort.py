@@ -18,6 +18,8 @@ def index_gen():
         for j in range(1, (length - i)):
             yield j
 
+        rects[length - i - 1].set_color('b')
+
     # A flag, represent the end of the sort.
     yield -1
 
@@ -39,9 +41,6 @@ def animate(i):
 
         rects[i - 1].set_color('b')
         rects[i].set_color('y')
-    elif i == -1:
-        for rect in rects:
-            rect.set_color('b')
 
     return rects
 
@@ -58,7 +57,7 @@ if __name__ == '__main__':
     datalist = range(1, length + 1)
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
-    rects = ax.bar(xpos, ypos, alpha=0.4)
+    rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
     
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
                                   init_func=init_animate, interval=50)
