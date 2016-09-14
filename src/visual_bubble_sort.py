@@ -47,10 +47,23 @@ def animate(i):
 if __name__ == '__main__':
     global length, ypos, rects
 
-    if len(sys.argv) > 1 and sys.argv[1].isdigit():
-        length = int(sys.argv[1])
+    if len(sys.argv) > 1:
+        if sys.argv[1].startswith('--'):
+            option = sys.argv[1][2:]
+            if option == 'help':
+                print '''Usage: python visual_bubble_sort.py NUMBER
+  or: python visual_bubble_sort.py NUMBER save
+Generate a NUMBER samples barchart to show how a bubble sort works.'''
+            else:
+                print 'invalid option\nTry \'python visual_bubble_sort.py --help\' for more information.'
+            sys.exit()
+
+        if sys.argv[1].isdigit():
+            length = int(sys.argv[1])
+        else:
+            length = 20
     else:
-        length = 20
+        sys.exit('missing operand\nTry \'python visual_bubble_sort.py --help\' for more information.')
 
     fig, ax = plt.subplots()
     xpos = np.arange(0, length)
@@ -64,7 +77,7 @@ if __name__ == '__main__':
 
     if len(sys.argv) > 2 and sys.argv[2] == 'save':
         ani.save_count = save_cnt_gen()
-        giffilename = "bubble_sort_" + str(length) + "samples_fps20_dpi50.gif"
-        ani.save(giffilename, writer='imagemagick', fps=20, dpi=50)
+        giffilename = 'bubble_sort_' + str(length) + 'samples_fps30_dpi50.gif'
+        ani.save(giffilename, writer='imagemagick', fps=30, dpi=50)
     else:
         plt.show()
