@@ -17,7 +17,7 @@ As "Introduction to Algorithms" introduces, _Bubblesort is a popular, but ineffi
 
 ```
 BUBBLESORT(A)
-The index of A[]is from 1 to A.length.
+The index of A[] is from 1 to A.length.
 1 for i = 1 to A.length - 1
 2     for j = 2 to A.length - i + 1
 3         if A[j] < A[j - 1]
