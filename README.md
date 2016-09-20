@@ -6,11 +6,10 @@
 
 ## Bubble Sort
 
-As "Introduction to Algorithms" introduces, *Bubblesort is a popular, but inefficient, sorting algorithm. **It works by repeatedly swapping adjacent elements that are out of order***.
-
-BUBBLESORT(A)
+As "Introduction to Algorithms" introduces, _Bubblesort is a popular, but inefficient, sorting algorithm. **It works by repeatedly swapping adjacent elements that are out of order**_.
 
 ```
+BUBBLESORT(A)
 1 for i = 1 to A.length - 1
 2     for j = A.length downto i + 1
 3         if A[j] < A[j - 1]
