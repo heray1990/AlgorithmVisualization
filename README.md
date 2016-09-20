@@ -26,6 +26,8 @@ The index of A[]is from 1 to A.length.
 
 Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_bubble_sort.py) and run it in Linux. You will intuitively see how bubble sort works.
 
-Run the command `python visual_bubble_sort.py 50`, you will get the animation as follow.
+Run the command `python visual_bubble_sort.py -n 50`, you will get the animation as follow.
 
 ![bubble_sort_50samples_fps20_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/bubble_sort_50samples_fps30_dpi50.gif)
+
+If you want to save the animation into \*.gif file, please run `python visual_bubble_sort.py -n 50 -o outputfile`. Then, you will get outputfile.gif.
