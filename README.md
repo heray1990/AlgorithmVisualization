@@ -11,7 +11,7 @@ As "Introduction to Algorithms" introduces, _Bubblesort is a popular, but ineffi
 ```
 BUBBLESORT(A)
 1 for i = 1 to A.length - 1
-2     for j = A.length downto i + 1
+2     for j = i + 1 to A.length
 3         if A[j] < A[j - 1]
 4             exchange A[j] with A[j - 1]
 ```
