@@ -2,7 +2,14 @@
 
 ## Table of Contents
 
+- [System Requirement]()
 - [Bubble Sort](https://github.com/heray1990/AlgorithmVisualization#bubble-sort)
+
+## System Requirement
+
+- Ubuntu
+- Python 2.7
+- matplotlib
 
 ## Bubble Sort
 
