@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-- [System Requirement]()
+- [System Requirement](https://github.com/heray1990/AlgorithmVisualization#system-requirement)
 - [Bubble Sort](https://github.com/heray1990/AlgorithmVisualization#bubble-sort)
 
 ## System Requirement
