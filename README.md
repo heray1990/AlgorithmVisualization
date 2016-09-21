@@ -29,7 +29,7 @@ Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisua
 
 Run the command `python visual_bubble_sort.py -n 50`, you will get the animation as follow.
 
-![bubble_sort_50samples_fps20_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/bubble_sort_50samples_fps30_dpi50.gif)
+![bubble_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/bubble_sort_50samples_fps30_dpi50.gif)
 
 If you want to save the animation into _\*.gif_ file, please run `python visual_bubble_sort.py -n 50 -o outputfile`. Then, you will get *outputfile.gif*.
 
@@ -55,3 +55,5 @@ INSERTION-SORT(A)
 ```
 
 ![sorting_cards_using_insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort.png)
+
+![insertion_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort_50samples_fps30_dpi50.gif)
