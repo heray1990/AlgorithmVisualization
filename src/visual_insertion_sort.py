@@ -16,14 +16,13 @@ def init_animate():
 def index_gen():
     for j in range(1, samples):
         key = rects[j].get_height()
+        rects[j].set_color('y')
         i = j - 1
         while i >= 0 and rects[i].get_height() > key:
+            rects[i].set_color('y')
             yield i, 0 
             i = i - 1
         yield i, key
-
-    # A flag, represent the end of the sort.
-    #yield -2
 
 def save_cnt_gen():
     k = 1
@@ -42,6 +41,8 @@ def animate(data):
 
     if key > 0:
         rects[i + 1].set_height(key)
+
+    rects[i + 1].set_color('b')
 
     return rects
 
