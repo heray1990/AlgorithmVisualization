@@ -17,9 +17,11 @@ def index_gen():
     for j in range(1, samples):
         key = rects[j].get_height()
         rects[j].set_color('y')
+        rects[j].set_alpha(1)
         i = j - 1
         while i >= 0 and rects[i].get_height() > key:
             rects[i].set_color('y')
+            rects[i].set_alpha(1)
             yield i, key, 0 
             i = i - 1
         yield i, key, 1
@@ -47,6 +49,7 @@ def animate(data):
         rects[i + 1].set_height(key)
 
     rects[i + 1].set_color('b')
+    rects[i + 1].set_alpha(0.4)
 
     return rects
 

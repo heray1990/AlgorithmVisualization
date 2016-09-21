@@ -19,6 +19,7 @@ def index_gen():
             yield j
 
         rects[samples - i - 1].set_color('b')
+        rects[samples - i - 1].set_alpha(0.4)
 
     # A flag, represent the end of the sort.
     yield -1
@@ -40,7 +41,9 @@ def animate(i):
             rects[i].set_height(tmp)
 
         rects[i - 1].set_color('b')
+        rects[i - 1].set_alpha(0.4)
         rects[i].set_color('y')
+        rects[i].set_alpha(1)
 
     return rects
 
