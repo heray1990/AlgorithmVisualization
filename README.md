@@ -36,7 +36,7 @@ If you want to save the animation into _\*.gif_ file, please run `python visual_
 
 ## Insertion Sort
 
-Insertion Sort is an efficient algorithm for sorting a small number of elements. **It splits a sequence into two parts, sorted sequence and unsorted one. Get an element from unsorted sequence and insert the element into the correct position in the sorted part. Do not stop until there is no element in unsorted part.**
+Insertion Sort is an efficient algorithm for sorting a small number of elements. **It separate a sequence as sorted part and unsorted one. Get an element from unsorted sequence and insert the element into the correct position in the sorted part. Do not stop until there is no element in unsorted part.**
 
 "[Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms)" gives an excellent example to explain this, _Insertion sort works the way many people sort a hand of playing cards. We start with an empty left hand and the cards face down on the table. We then remove one card at a time from the table and insert it into the correct position in the left hand. To find the correct position for a card, we compare it with each of the cards already in the hand, from right to left. At all times, the cards held in the left hand are sorted, and these cards were originally the top cards of the pile on the table._
 
@@ -67,3 +67,15 @@ Run `python visual_insertion_sort.py -n 50 -o outputfile` to save the animation 
 
 ## Selection Sort
 
+**Selection Sort** is similar to **Insertion Sort**. They both separate a sequence as two  sequences, sorted one and unsorted one. **Selection Sort selects a smallest element from unsorted sequence and exchange the smallest element with the element just behind sorted sequence**, while **Insertion Sort** get the first element from unsorted sequence and insert it into the correct position of sorted sequence.
+
+```
+SELECTION-SORT(A)
+// A[1..n]
+1 for i = 1 to n - 1
+2     indexOfMinElement = i
+3     for j = i + 1 to n
+4         if A[j] < A[indexOfMinElement]
+5             indexOfMinElement = j
+6         exchange A[i] with A[indexOfMinElement]
+```
