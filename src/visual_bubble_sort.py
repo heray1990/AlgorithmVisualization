@@ -26,6 +26,7 @@ def save_cnt_gen():
     k = 1
 
     for i in range(0, (samples - 1)):
+        k += 1
         for j in range(1, (samples - i)):
             k += 1
 
