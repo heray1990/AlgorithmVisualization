@@ -15,15 +15,12 @@ def init_animate():
 
 def index_gen():
     for i in range(0, (samples - 1)):
-        yield -1
+        yield i, 0
         for j in range(1, (samples - i)):
-            yield j
-
-        rects[samples - i - 1].set_color('b')
-        rects[samples - i - 1].set_alpha(0.4)
+            yield j, 1
 
     # A flag, represent the end of the sort.
-    yield -2
+    yield i, 2
 
 def save_cnt_gen():
     k = 1
@@ -34,8 +31,9 @@ def save_cnt_gen():
 
     return k
 
-def animate(i):
-    if i > 0:
+def animate(data):
+    i, flag = data
+    if flag == 1:
         if rects[i - 1].get_height() > rects[i].get_height():
             tmp = rects[i - 1].get_height()
             rects[i - 1].set_height(rects[i].get_height())
@@ -45,9 +43,15 @@ def animate(i):
         rects[i - 1].set_alpha(0.4)
         rects[i].set_color('y')
         rects[i].set_alpha(1)
-    elif i == -1:
+    elif flag == 0:
         rects[0].set_color('y')
         rects[0].set_alpha(1)
+        if i > 0:
+            rects[samples - i].set_color('b')
+            rects[samples - i].set_alpha(0.4)
+    elif flag == 2:
+        rects[1].set_color('b')
+        rects[1].set_alpha(0.4)
 
     return rects
 
