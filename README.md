@@ -5,6 +5,7 @@
 - [System Requirement](https://github.com/heray1990/AlgorithmVisualization#system-requirement)
 - [Bubble Sort](https://github.com/heray1990/AlgorithmVisualization#bubble-sort)
 - [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort)
+- [Selection Sort](https://github.com/heray1990/AlgorithmVisualization#selection-sort)
 
 ## System Requirement
 
@@ -25,7 +26,7 @@ BUBBLE-SORT(A)
 4             exchange A[j] with A[j - 1]
 ```
 
-Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_bubble_sort.py) and run it in Linux. You will intuitively see how bubble sort works.
+Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_bubble_sort.py) and run it in Linux. You will see how bubble sort works.
 
 Run the command `python visual_bubble_sort.py -n 50`, you will get the animation as follow.
 
@@ -56,4 +57,13 @@ INSERTION-SORT(A)
 
 ![sorting_cards_using_insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort.png)
 
+Download [src/visual_insertion_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_insertion_sort.py) and run it in Linux. You will see how insertion sort works.
+
+Run the command `python visual_insertion_sort.py -n 50`, you will get the animation as follow.
+
 ![insertion_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort_50samples_fps30_dpi50.gif)
+
+Run `python visual_insertion_sort.py -n 50 -o outputfile` to save the animation into a _output.gif_ file.
+
+## Selection Sort
+
