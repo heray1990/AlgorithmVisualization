@@ -77,5 +77,5 @@ SELECTION-SORT(A)
 3     for j = i + 1 to n
 4         if A[j] < A[indexOfMinElement]
 5             indexOfMinElement = j
-6         exchange A[i] with A[indexOfMinElement]
+6     exchange A[i] with A[indexOfMinElement]
 ```
