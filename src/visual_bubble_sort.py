@@ -15,6 +15,7 @@ def init_animate():
 
 def index_gen():
     for i in range(0, (samples - 1)):
+        yield -1
         for j in range(1, (samples - i)):
             yield j
 
@@ -22,7 +23,7 @@ def index_gen():
         rects[samples - i - 1].set_alpha(0.4)
 
     # A flag, represent the end of the sort.
-    yield -1
+    yield -2
 
 def save_cnt_gen():
     k = 1
@@ -44,6 +45,9 @@ def animate(i):
         rects[i - 1].set_alpha(0.4)
         rects[i].set_color('y')
         rects[i].set_alpha(1)
+    elif i == -1:
+        rects[0].set_color('y')
+        rects[0].set_alpha(1)
 
     return rects
 
