@@ -18,13 +18,14 @@ def index_gen():
         key = rects[j].get_height()
         rects[j].set_color('y')
         rects[j].set_alpha(1)
+        yield j, key, 0 
         i = j - 1
         while i >= 0 and rects[i].get_height() > key:
             rects[i].set_color('y')
             rects[i].set_alpha(1)
-            yield i, key, 0 
+            yield i, key, 1 
             i = i - 1
-        yield i, key, 1
+        yield i, key, 2
 
 def save_cnt_gen():
     k = 1
@@ -39,17 +40,18 @@ def save_cnt_gen():
     return k
 
 def animate(data):
-    i, key, isanotherloop = data
+    i, key, step = data
 
-    if isanotherloop == 0:
+    if step == 1:
         if i >= 0:
             rects[i + 1].set_height(rects[i].get_height())
             rects[i].set_height(key)
-    else:
+    elif step == 2:
         rects[i + 1].set_height(key)
 
-    rects[i + 1].set_color('b')
-    rects[i + 1].set_alpha(0.4)
+    if step > 0:
+        rects[i + 1].set_color('b')
+        rects[i + 1].set_alpha(0.4)
 
     return rects
 
