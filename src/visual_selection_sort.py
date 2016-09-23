@@ -33,12 +33,10 @@ def index_gen():
 def save_cnt_gen():
     k = 1
 
-    for j in range(1, samples):
-        i = j - 1
-        while i >= 0:
-            k += 1
-            i = i - 1
+    for i in range(0, samples - 1):
         k += 1
+        for j in range(i + 1, samples):
+            k += 1
 
     return k
 
