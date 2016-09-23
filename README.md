@@ -82,7 +82,7 @@ SELECTION-SORT(A)
 
 ![selection_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/selection_sort.png)
 
-Download [src/visual_selection_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_selection_sort.py) and run it in Linux. You will see how insertion sort works.
+Download [src/visual_selection_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_selection_sort.py) and run it in Linux. You will see how selection sort works.
 
 Run the command `python visual_selection_sort.py -n 50`, you will get the animation as follow.
 
