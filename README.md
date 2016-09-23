@@ -67,7 +67,7 @@ Run `python visual_insertion_sort.py -n 50 -o outputfile` to save the animation 
 
 ## Selection Sort
 
-**Selection Sort** is similar to **Insertion Sort**. They both separate a sequence as two  sequences, sorted one and unsorted one. **Selection Sort selects a smallest element from unsorted sequence and exchange the smallest element with the element just behind sorted sequence**, while **Insertion Sort** get the first element from unsorted sequence and insert it into the correct position of sorted sequence.
+**Selection Sort** is similar to [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort). They both separate a sequence as two  sequences, sorted one and unsorted one. **Selection Sort selects a smallest element from unsorted sequence and exchange the smallest element with the element just behind sorted sequence**, while [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) get the first element from unsorted sequence and insert it into the correct position of sorted sequence.
 
 ```
 SELECTION-SORT(A)
