@@ -17,18 +17,18 @@ def init_animate():
         i += 1
 
 def index_gen():
+    idxOfMinElement = 0
     for i in range(0, samples - 1):
+        yield i, idxOfMinElement, -2 
         idxOfMinElement = i
-        yield i, idxOfMinElement, -1 
         for j in range(i + 1, samples):
-            k = 0
+            k = -1
             if rects[j].get_height() < rects[idxOfMinElement].get_height():
                 k = idxOfMinElement
                 idxOfMinElement = j
             yield j, idxOfMinElement, k 
-        yield i, idxOfMinElement, -2
-
-    #yield i, idxOfMinElement, -3
+        if i == samples - 2:
+            yield j, idxOfMinElement, -2 
 
 def save_cnt_gen():
     k = 1
@@ -45,28 +45,31 @@ def save_cnt_gen():
 def animate(data):
     i, idxOfMin, flag = data
 
-    if flag == -1:
+    if flag == -2:
         rects[i].set_color('y')
-        rects[i].set_alpha(1)
-    elif flag >= 0:
-        if flag > 0 or i == 1:
+        if i < samples - 1:
+            rects[i].set_alpha(1)
+        if i > 0:
+            # Exchange two elements
+            tmp = rects[idxOfMin].get_height()
+            rects[idxOfMin].set_height(rects[i - 1].get_height())
+            rects[idxOfMin].set_color('b')
+            rects[idxOfMin].set_alpha(0.4)
+            rects[i - 1].set_height(tmp)
+            rects[i - 1].set_color('b')
+            rects[i - 1].set_alpha(0.4)
+            rects[samples - 1].set_color('b')
+    elif flag >= -1:
+        if flag >= 0 or i == 1:
             rects[flag].set_color('b')
             rects[flag].set_alpha(0.4)
-        rects[i - 1].set_color('b')
-        rects[i - 1].set_alpha(0.4)
+        if i > 1:
+            rects[i - 1].set_color('b')
+            rects[i - 1].set_alpha(0.4)
         rects[i].set_color('y')
         rects[i].set_alpha(0.4)
         rects[idxOfMin].set_color('y')
         rects[idxOfMin].set_alpha(1)
-    elif flag == -2:
-        tmp = rects[idxOfMin].get_height()
-        rects[idxOfMin].set_height(rects[i].get_height())
-        rects[idxOfMin].set_color('b')
-        rects[idxOfMin].set_alpha(0.4)
-        rects[i].set_height(tmp)
-        rects[i].set_color('b')
-        rects[i].set_alpha(0.4)
-        rects[samples - 1].set_color('b')
 
     return rects
 
