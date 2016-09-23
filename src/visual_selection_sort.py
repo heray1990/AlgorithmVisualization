@@ -44,9 +44,6 @@ def animate(data):
     i, idxOfMin, flag = data
 
     if flag == -2:
-        rects[i].set_color('y')
-        if i < samples - 1:
-            rects[i].set_alpha(1)
         if i > 0:
             # Exchange two elements
             tmp = rects[idxOfMin].get_height()
@@ -57,6 +54,9 @@ def animate(data):
             rects[i - 1].set_color('b')
             rects[i - 1].set_alpha(0.4)
             rects[samples - 1].set_color('b')
+        if i < samples - 1:
+            rects[i].set_color('y')
+            rects[i].set_alpha(1)
     elif flag >= -1:
         if flag >= 0 or i == 1:
             rects[flag].set_color('b')
