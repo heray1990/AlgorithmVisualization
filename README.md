@@ -55,7 +55,7 @@ INSERTION-SORT(A)
 8     A[i + 1] = key
 ```
 
-![sorting_cards_using_insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort.png)
+![insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort.png)
 
 Download [src/visual_insertion_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_insertion_sort.py) and run it in Linux. You will see how insertion sort works.
 
@@ -79,3 +79,5 @@ SELECTION-SORT(A)
 5             indexOfMinElement = j
 6     exchange A[i] with A[indexOfMinElement]
 ```
+
+![selection_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/selection_sort.png)
