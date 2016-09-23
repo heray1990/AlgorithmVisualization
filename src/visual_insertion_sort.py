@@ -26,7 +26,7 @@ def index_gen():
     yield i, key, -2
 
 def save_cnt_gen():
-    k = 1
+    k = 0
 
     for j in range(1, samples):
         i = j - 1

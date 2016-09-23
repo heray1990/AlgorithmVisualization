@@ -31,7 +31,7 @@ def index_gen():
             yield j, idxOfMinElement, -2 
 
 def save_cnt_gen():
-    k = 1
+    k = 0
 
     for i in range(0, samples - 1):
         k += 1
