@@ -19,15 +19,16 @@ def init_animate():
 def index_gen():
     for i in range(0, samples - 1):
         idxOfMinElement = i
-        yield i, idxOfMinElement, 0 
+        yield i, idxOfMinElement, -1 
         for j in range(i + 1, samples):
+            k = 0
             if rects[j].get_height() < rects[idxOfMinElement].get_height():
-                yield j, idxOfMinElement, 1 
+                k = idxOfMinElement
                 idxOfMinElement = j
-            yield j, idxOfMinElement, 2 
-        yield i, idxOfMinElement, 3
+            yield j, idxOfMinElement, k 
+        yield i, idxOfMinElement, -2
 
-    yield i, idxOfMinElement, -2
+    #yield i, idxOfMinElement, -3
 
 def save_cnt_gen():
     k = 1
@@ -44,22 +45,20 @@ def save_cnt_gen():
 def animate(data):
     i, idxOfMin, flag = data
 
-    if flag == 0:
+    if flag == -1:
         rects[i].set_color('y')
         rects[i].set_alpha(1)
-    elif flag == 1:
-        rects[idxOfMin].set_color('b')
-        rects[idxOfMin].set_alpha(0.4)
-        #rects[i].set_color('y')
-        #rects[i].set_alpha(1)
-    elif flag == 2:
+    elif flag >= 0:
+        if flag > 0 or i == 1:
+            rects[flag].set_color('b')
+            rects[flag].set_alpha(0.4)
+        rects[i - 1].set_color('b')
+        rects[i - 1].set_alpha(0.4)
         rects[i].set_color('y')
         rects[i].set_alpha(0.4)
         rects[idxOfMin].set_color('y')
         rects[idxOfMin].set_alpha(1)
-        rects[i - 1].set_color('b')
-        rects[i - 1].set_alpha(0.4)
-    elif flag == 3:
+    elif flag == -2:
         tmp = rects[idxOfMin].get_height()
         rects[idxOfMin].set_height(rects[i].get_height())
         rects[idxOfMin].set_color('b')
@@ -108,7 +107,7 @@ see the animation or save it into <outputfile>.gif file.'''
     rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
     
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
-                                  init_func=init_animate, interval=500)
+                                  init_func=init_animate, interval=50)
     if outputfile == '':
         plt.show()
     else:
