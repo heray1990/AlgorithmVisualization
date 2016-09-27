@@ -5,6 +5,7 @@
 - [System Requirement](https://github.com/heray1990/AlgorithmVisualization#system-requirement)
 - [Bubble Sort](https://github.com/heray1990/AlgorithmVisualization#bubble-sort)
 - [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort)
+- [Shell Sort](https://github.com/heray1990/AlgorithmVisualization#shell-sort)
 - [Selection Sort](https://github.com/heray1990/AlgorithmVisualization#selection-sort)
 
 ## System Requirement
@@ -64,6 +65,12 @@ Run the command `python visual_insertion_sort.py -n 50`, you will get the animat
 ![insertion_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort_50samples_fps30_dpi50.gif)
 
 Run `python visual_insertion_sort.py -n 50 -o outputfile` to save the animation into a _output.gif_ file.
+
+## Shell Sort
+
+Shell Sort was proposed in 1959 by Donald L. Shell, which uses insertion sort on periodic subsequences of the input to produce a faster sorting algorithm.
+
+![shell_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/shell_sort.png)
 
 ## Selection Sort
 
