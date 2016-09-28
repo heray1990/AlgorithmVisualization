@@ -43,6 +43,8 @@ Insertion Sort is an efficient algorithm for sorting a small number of elements.
 
 ![sorting_cards_using_insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/sorting_cards_using_insertion_sort.png)
 
+> Figure is taken from [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) (Page 17 Figure 2.1).
+
 ```
 INSERTION-SORT(A)
 // A[1..n]
@@ -72,13 +74,24 @@ Shell Sort was proposed in 1959 by Donald L. Shell, which uses [Insertion Sort](
 
 ![shell_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/shell_sort.png)
 
-> Table is taken from [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 84 Table 3).
+> Figure is taken from [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 84 Table 3).
 
 Shell Sort is also known as the "diminishing increment sort". It uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on the large interval of elements to sort. Then the interval of sorting keeps on decreasing in a sequence until the interval reaches 1. These intervals are known as **gap sequence** (**increment sequence**). Shell’s original gap sequence: **N/2, N/4, …, 1** (repeatedly divide by 2), but _any_ sequence can be use, so long as the last gap equals 1. [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 85) made a detailed description for choosing a good sequence of increments for use in Shell Sort.
 
 ```
 SHELL-SORT(A)
 // A[1..n]
+1 gap = n / 2
+2 while gap >= 1
+3     for i = 1 to gap
+4         for j = i + gap to n step = gap    // Insertion Sort
+5             key = A[j]
+6             k = j - gap
+7             while k > 0 and A[k] > key
+8                 A[k + gap] = A[k]
+9                 k = k - gap
+10            A[k + gap] = key
+11    gap = gap / 2
 ```
 
 ## Selection Sort
