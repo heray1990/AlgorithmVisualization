@@ -22,7 +22,7 @@ As [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms
 BUBBLE-SORT(A)
 // A[1..n]
 1 for i = 1 to n - 1
-2     for j = 2 to n - i + 1
+2     for j = n downto i + 1
 3         if A[j] < A[j - 1]
 4             exchange A[j] with A[j - 1]
 ```
