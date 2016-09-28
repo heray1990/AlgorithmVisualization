@@ -16,7 +16,7 @@
 
 ## Bubble Sort
 
-As "[Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms)" introduces, _Bubble Sort is a popular, but inefficient, sorting algorithm. **It works by repeatedly swapping adjacent elements that are out of order**_.
+As [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) introduces, _Bubble Sort is a popular, but inefficient, sorting algorithm. **It works by repeatedly swapping adjacent elements that are out of order**_.
 
 ```
 BUBBLE-SORT(A)
@@ -39,7 +39,7 @@ If you want to save the animation into _\*.gif_ file, please run `python visual_
 
 Insertion Sort is an efficient algorithm for sorting a small number of elements. **It separate a sequence as sorted part and unsorted one. Get an element from unsorted sequence and insert the element into the correct position in the sorted part. Do not stop until there is no element in unsorted part.**
 
-"[Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms)" gives an excellent example to explain this, _Insertion sort works the way many people sort a hand of playing cards. We start with an empty left hand and the cards face down on the table. We then remove one card at a time from the table and insert it into the correct position in the left hand. To find the correct position for a card, we compare it with each of the cards already in the hand, from right to left. At all times, the cards held in the left hand are sorted, and these cards were originally the top cards of the pile on the table._
+[*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) gives an excellent example to explain this, _Insertion sort works the way many people sort a hand of playing cards. We start with an empty left hand and the cards face down on the table. We then remove one card at a time from the table and insert it into the correct position in the left hand. To find the correct position for a card, we compare it with each of the cards already in the hand, from right to left. At all times, the cards held in the left hand are sorted, and these cards were originally the top cards of the pile on the table._
 
 ![sorting_cards_using_insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/sorting_cards_using_insertion_sort.png)
 
@@ -68,9 +68,18 @@ Run `python visual_insertion_sort.py -n 50 -o outputfile` to save the animation 
 
 ## Shell Sort
 
-Shell Sort was proposed in 1959 by Donald L. Shell, which uses insertion sort on periodic subsequences of the input to produce a faster sorting algorithm.
+Shell Sort was proposed in 1959 by Donald L. Shell, which uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on periodic subsequences of the input to produce a faster sorting algorithm.
 
 ![shell_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/shell_sort.png)
+
+> Table is taken from [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 84 Table 3).
+
+Shell Sort is also known as the "diminishing increment sort". It uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on the large interval of elements to sort. Then the interval of sorting keeps on decreasing in a sequence until the interval reaches 1. These intervals are known as **gap sequence** (**increment sequence**). Shell’s original gap sequence: **N/2, N/4, …, 1** (repeatedly divide by 2), but _any_ sequence can be use, so long as the last gap equals 1. [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 85) made a detailed description for choosing a good sequence of increments for use in Shell Sort.
+
+```
+SHELL-SORT(A)
+// A[1..n]
+```
 
 ## Selection Sort
 
