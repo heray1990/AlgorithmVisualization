@@ -5,6 +5,7 @@
 - [System Requirement](https://github.com/heray1990/AlgorithmVisualization#system-requirement)
 - [Bubble Sort](https://github.com/heray1990/AlgorithmVisualization#bubble-sort)
 - [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort)
+- [Shell Sort](https://github.com/heray1990/AlgorithmVisualization#shell-sort)
 - [Selection Sort](https://github.com/heray1990/AlgorithmVisualization#selection-sort)
 
 ## System Requirement
@@ -15,13 +16,13 @@
 
 ## Bubble Sort
 
-As "[Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms)" introduces, _Bubble Sort is a popular, but inefficient, sorting algorithm. **It works by repeatedly swapping adjacent elements that are out of order**_.
+As [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) introduces, _Bubble Sort is a popular, but inefficient, sorting algorithm. **It works by repeatedly swapping adjacent elements that are out of order**_.
 
 ```
 BUBBLE-SORT(A)
 // A[1..n]
 1 for i = 1 to n - 1
-2     for j = 2 to n - i + 1
+2     for j = n downto i + 1
 3         if A[j] < A[j - 1]
 4             exchange A[j] with A[j - 1]
 ```
@@ -38,9 +39,11 @@ If you want to save the animation into _\*.gif_ file, please run `python visual_
 
 Insertion Sort is an efficient algorithm for sorting a small number of elements. **It separate a sequence as sorted part and unsorted one. Get an element from unsorted sequence and insert the element into the correct position in the sorted part. Do not stop until there is no element in unsorted part.**
 
-"[Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms)" gives an excellent example to explain this, _Insertion sort works the way many people sort a hand of playing cards. We start with an empty left hand and the cards face down on the table. We then remove one card at a time from the table and insert it into the correct position in the left hand. To find the correct position for a card, we compare it with each of the cards already in the hand, from right to left. At all times, the cards held in the left hand are sorted, and these cards were originally the top cards of the pile on the table._
+[*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) gives an excellent example to explain this, _Insertion sort works the way many people sort a hand of playing cards. We start with an empty left hand and the cards face down on the table. We then remove one card at a time from the table and insert it into the correct position in the left hand. To find the correct position for a card, we compare it with each of the cards already in the hand, from right to left. At all times, the cards held in the left hand are sorted, and these cards were originally the top cards of the pile on the table._
 
 ![sorting_cards_using_insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/sorting_cards_using_insertion_sort.png)
+
+> Figure is taken from [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) (Page 17 Figure 2.1).
 
 ```
 INSERTION-SORT(A)
@@ -65,9 +68,35 @@ Run the command `python visual_insertion_sort.py -n 50`, you will get the animat
 
 Run `python visual_insertion_sort.py -n 50 -o outputfile` to save the animation into a _output.gif_ file.
 
+## Shell Sort
+
+Shell Sort was proposed in 1959 by Donald L. Shell, which uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on periodic subsequences of the input to produce a faster sorting algorithm.
+
+![shell_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/shell_sort.png)
+
+> Figure is taken from [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 84 Table 3).
+
+Shell Sort is also known as the "diminishing increment sort". It uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on the large interval of elements to sort. Then the interval of sorting keeps on decreasing in a sequence until the interval reaches 1. These intervals are known as **gap sequence** (**increment sequence**). Shell’s original gap sequence: **N/2, N/4, …, 1** (repeatedly divide by 2), but _any_ sequence can be use, so long as the last gap equals 1. [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 85) made a detailed description for choosing a good sequence of increments for use in Shell Sort.
+
+```
+SHELL-SORT(A)
+// A[1..n]
+1 gap = n / 2
+2 while gap >= 1
+3     for i = 1 to gap
+4         for j = i + gap to n step = gap    // Insertion Sort
+5             key = A[j]
+6             k = j - gap
+7             while k > 0 and A[k] > key
+8                 A[k + gap] = A[k]
+9                 k = k - gap
+10            A[k + gap] = key
+11    gap = gap / 2
+```
+
 ## Selection Sort
 
-**Selection Sort** is similar to **Insertion Sort**. They both separate a sequence as two  sequences, sorted one and unsorted one. **Selection Sort selects a smallest element from unsorted sequence and exchange the smallest element with the element just behind sorted sequence**, while **Insertion Sort** get the first element from unsorted sequence and insert it into the correct position of sorted sequence.
+**Selection Sort** is similar to [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort). They both separate a sequence as two  sequences, sorted one and unsorted one. **Selection Sort selects a smallest element from unsorted sequence and exchange the smallest element with the element just behind sorted sequence**, while [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) get the first element from unsorted sequence and insert it into the correct position of sorted sequence.
 
 ```
 SELECTION-SORT(A)
