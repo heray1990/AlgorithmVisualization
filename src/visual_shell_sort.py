@@ -21,15 +21,16 @@ def index_gen():
     while gap >= 1:
         for i in range(0, gap):
             if i == 0:
-                yield i, gap, 0, 0
+                yield i, gap, 0, -1 
             for j in range(i + gap, samples, gap):  # Insertion Sort
                 key = rects[j].get_height()
+                yield j, gap, key, k + gap
                 k = j - gap
                 while k >= 0 and rects[k].get_height() > key:
-                    #yield k
+                    yield k, gap, key, -2
                     k = k - gap
             if i > 0:
-                yield i, gap, 0, 0
+                yield i, gap, 0, -1
         gap = gap / 2
 
 def save_cnt_gen():
@@ -48,7 +49,7 @@ def animate(data):
     i, gap, key, flag = data
     print(str(i) + ', ' + str(gap) + ', ' + str(key) + ', ' + str(flag))
 
-    if flag == 0:
+    if flag == -1:
         for j in range(i, samples, gap):
             if gap > 1:
                 rects[j].set_color('y')
@@ -59,12 +60,23 @@ def animate(data):
                 if j == samples % gap:
                     rects[samples - 1].set_color('b')
                     rects[samples - 1].set_alpha(0.4)
-                #if samples - j < gap and samples - j > 1:
-                #    rects[samples - 1].set_color('b')
-                #    rects[samples - 1].set_alpha(0.4)
             else:
                 rects[j].set_color('b')
                 rects[j].set_alpha(0.4)
+    elif flag >= 0 and flag < samples:
+        if i > 1:
+            rects[flag].set_color('b')
+            rects[flag].set_alpha(0.4)
+        rects[i].set_color('y')
+        rects[i].set_alpha(1)
+    elif flag == -2:
+        if i >= 0:
+            rects[i + gap].set_height(rects[i].get_height())
+            rects[i + gap].set_color('y')
+            rects[i + gap].set_alpha(0.4)
+            rects[i].set_height(key)
+            rects[i].set_color('y')
+            rects[i].set_alpha(1)
 
     return rects
 
