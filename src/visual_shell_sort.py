@@ -28,7 +28,8 @@ def index_gen():
                 while k >= 0 and rects[k].get_height() > key:
                     yield k, gap, key, -2
                     k = k - gap
-        yield k, gap, key, -3
+        if gap == 1:
+            yield k, gap, key, -3
         gap = gap / 2
 
 def save_cnt_gen():
@@ -68,7 +69,6 @@ def animate(data):
                 rects[j].set_color('b')
                 rects[j].set_alpha(0.4)
                 dbgmsg = dbgmsg + 'r[' + str(j) + ']' + ':b0.4  '
-        print(dbgmsg)
     elif flag >= 0 and flag < samples:
         if i > gap:
             rects[flag].set_alpha(0.4)
@@ -81,7 +81,6 @@ def animate(data):
             rects[i].set_color('y')
             dbgmsg = dbgmsg + 'r[' + str(flag) + ']' + ':b  '
             dbgmsg = dbgmsg + 'r[' + str(i) + ']' + ':y  '
-        print(dbgmsg)
     elif flag == -2:
         if i >= 0:
             rects[i + gap].set_height(rects[i].get_height())
@@ -96,12 +95,12 @@ def animate(data):
                 rects[i].set_color('y')
                 dbgmsg = dbgmsg + 'r[' + str(i + gap) + ']' + ':b  '
                 dbgmsg = dbgmsg + 'r[' + str(i) + ']' + ':y  '
-        print(dbgmsg)
     elif flag == -3:
         rects[i + gap].set_color('b')
         rects[i + gap].set_alpha(0.4)
         dbgmsg = dbgmsg + 'r[' + str(i + gap) + ']' + ':b0.4  '
-        print(dbgmsg)
+
+    print(dbgmsg)
 
     return rects
 
