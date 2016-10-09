@@ -28,6 +28,7 @@ def index_gen():
                 while k >= 0 and rects[k].get_height() > key:
                     yield k, gap, key, -2
                     k = k - gap
+        yield k, gap, key, -3
         gap = gap / 2
 
 def save_cnt_gen():
@@ -78,6 +79,9 @@ def animate(data):
             if gap == 1:
                 rects[i + gap].set_color('b')
                 rects[i].set_color('y')
+    elif flag == -3:
+        rects[i + gap].set_color('b')
+        rects[i + gap].set_alpha(0.4)
 
     return rects
 
