@@ -45,43 +45,63 @@ def save_cnt_gen():
 
 def animate(data):
     i, gap, key, flag = data
-    #print(str(i) + ', ' + str(gap) + ', ' + str(key) + ', ' + str(flag))
+    print(str(i) + ', ' + str(gap) + ', ' + str(key) + ', ' + str(flag))
+    dbgmsg = ''
 
     if flag == -1:
         for j in range(i, samples, gap):
             if gap > 1:
                 rects[j].set_color('y')
                 rects[j].set_alpha(0.4)
-                if j > 0:
-                    rects[j - 1].set_color('b')
-                    rects[j - 1].set_alpha(0.4)
-                if j == samples % gap:
-                    rects[samples - 1].set_color('b')
-                    rects[samples - 1].set_alpha(0.4)
+                dbgmsg = dbgmsg + 'r[' + str(j) + ']' + ':y0.4  '
+
+                if i > 0 or gap < samples / 2:
+                    if j > 0:
+                        rects[j - 1].set_color('b')
+                        rects[j - 1].set_alpha(0.4)
+                        dbgmsg = dbgmsg + 'r[' + str(j - 1) + ']' + ':b0.4  '
+                    if j == samples % gap:
+                        rects[samples - 1].set_color('b')
+                        rects[samples - 1].set_alpha(0.4)
+                        dbgmsg = dbgmsg + 'r[' + str(samples - 1) + ']' + ':b0.4  '
             else:
                 rects[j].set_color('b')
                 rects[j].set_alpha(0.4)
+                dbgmsg = dbgmsg + 'r[' + str(j) + ']' + ':b0.4  '
+        print(dbgmsg)
     elif flag >= 0 and flag < samples:
         if i > gap:
             rects[flag].set_alpha(0.4)
+            dbgmsg = dbgmsg + 'r[' + str(flag) + ']' + ':0.4  '
         rects[i].set_alpha(1)
+        dbgmsg = dbgmsg + 'r[' + str(i) + ']' + ':1  '
 
         if gap == 1:
             rects[flag].set_color('b')
             rects[i].set_color('y')
+            dbgmsg = dbgmsg + 'r[' + str(flag) + ']' + ':b  '
+            dbgmsg = dbgmsg + 'r[' + str(i) + ']' + ':y  '
+        print(dbgmsg)
     elif flag == -2:
         if i >= 0:
             rects[i + gap].set_height(rects[i].get_height())
             rects[i + gap].set_alpha(0.4)
             rects[i].set_height(key)
             rects[i].set_alpha(1)
+            dbgmsg = dbgmsg + 'r[' + str(i + gap) + ']' + ':0.4  '
+            dbgmsg = dbgmsg + 'r[' + str(i) + ']' + ':1  '
 
             if gap == 1:
                 rects[i + gap].set_color('b')
                 rects[i].set_color('y')
+                dbgmsg = dbgmsg + 'r[' + str(i + gap) + ']' + ':b  '
+                dbgmsg = dbgmsg + 'r[' + str(i) + ']' + ':y  '
+        print(dbgmsg)
     elif flag == -3:
         rects[i + gap].set_color('b')
         rects[i + gap].set_alpha(0.4)
+        dbgmsg = dbgmsg + 'r[' + str(i + gap) + ']' + ':b0.4  '
+        print(dbgmsg)
 
     return rects
 
@@ -122,9 +142,9 @@ see the animation or save it into <outputfile>.gif file.'''
     rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
     
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
-                                  init_func=init_animate, interval=50)
+                                  init_func=init_animate, interval=500)
     if outputfile == '':
         plt.show()
     else:
         ani.save_count = save_cnt_gen()
-        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
+        ani.save(outputfile + '.gif', writer='imagemagick', fps=3, dpi=50)
