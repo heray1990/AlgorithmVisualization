@@ -94,6 +94,14 @@ SHELL-SORT(A)
 11    gap = gap / 2
 ```
 
+Download [src/visual_shell_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_shell_sort.py) and run it in Linux. You will see how insertion sort works.
+
+Run the command `python visual_shell_sort.py -n 50`, you will get the animation as follow.
+
+![shell_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/shell_sort_50samples_fps30_dpi50.gif)
+
+Run `python visual_shell_sort.py -n 50 -o outputfile` to save the animation into a _output.gif_ file.
+
 ## Selection Sort
 
 **Selection Sort** is similar to [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort). They both separate a sequence as two  sequences, sorted one and unsorted one. **Selection Sort selects a smallest element from unsorted sequence and exchange the smallest element with the element just behind sorted sequence**, while [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) get the first element from unsorted sequence and insert it into the correct position of sorted sequence.
