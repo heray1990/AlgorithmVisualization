@@ -94,7 +94,7 @@ SHELL-SORT(A)
 11    gap = gap / 2
 ```
 
-Download [src/visual_shell_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_shell_sort.py) and run it in Linux. You will see how insertion sort works.
+Download [src/visual_shell_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_shell_sort.py) and run it in Linux. You will see how shell sort works.
 
 Run the command `python visual_shell_sort.py -n 50`, you will get the animation as follow.
 
