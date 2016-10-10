@@ -35,16 +35,22 @@ def index_gen():
         gap = gap / 2
 
 def save_cnt_gen():
+    m = 1 
     k = 0
+    gap = samples / 2
 
-    for j in range(1, samples):
-        i = j - 1
-        while i >= 0:
-            k += 1
-            i = i - 1
-        k += 1
+    while gap >= 1:
+        for i in range(0, gap):
+            m += 1
+            for j in range(i + gap, samples, gap):  # Insertion Sort
+                m += 1
+                k = j - gap
+                while k >= 0:
+                    m += 1
+                    k = k - gap
+        gap = gap / 2
 
-    return k
+    return m
 
 def animate(data):
     i, gap, key, flag = data
