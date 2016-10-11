@@ -7,6 +7,7 @@
 - [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort)
 - [Shell Sort](https://github.com/heray1990/AlgorithmVisualization#shell-sort)
 - [Selection Sort](https://github.com/heray1990/AlgorithmVisualization#selection-sort)
+- [Merge Sort](https://github.com/heray1990/AlgorithmVisualization#merge-sort)
 
 ## System Requirement
 
@@ -27,7 +28,7 @@ BUBBLE-SORT(A)
 4             exchange A[j] with A[j - 1]
 ```
 
-Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_bubble_sort.py) and run it in Linux. You will see how bubble sort works.
+Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_bubble_sort.py) and run it in Linux. You will see how Bubble Sort works.
 
 Run the command `python visual_bubble_sort.py -n 50`, you will get the animation as follow.
 
@@ -60,7 +61,7 @@ INSERTION-SORT(A)
 
 ![insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort.png)
 
-Download [src/visual_insertion_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_insertion_sort.py) and run it in Linux. You will see how insertion sort works.
+Download [src/visual_insertion_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_insertion_sort.py) and run it in Linux. You will see how Insertion Sort works.
 
 Run the command `python visual_insertion_sort.py -n 50`, you will get the animation as follow.
 
@@ -74,9 +75,9 @@ Shell Sort was proposed in 1959 by Donald L. Shell, which uses [Insertion Sort](
 
 ![shell_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/shell_sort.png)
 
-> Figure is taken from [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 84 Table 3).
+> This figure is a duplicate of a table from [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 84 Table 3).
 
-Shell Sort is also known as the "diminishing increment sort". It uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on the large interval of elements to sort. Then the interval of sorting keeps on decreasing in a sequence until the interval reaches 1. These intervals are known as **gap sequence** (**increment sequence**). Shell’s original gap sequence: **N/2, N/4, …, 1** (repeatedly divide by 2), but _any_ sequence can be use, so long as the last gap equals 1. [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 85) made a detailed description for choosing a good sequence of increments for use in Shell Sort.
+Shell Sort is also known as the "diminishing increment sort". It uses [Insertion Sort](https://github.com/heray1990/AlgorithmVisualization#insertion-sort) on the large interval of elements to sort. Then the interval of sorting keeps on decreasing in a sequence until the interval reaches 1. These intervals are known as **gap sequence** (**increment sequence**). Shell’s original gap sequence: **N/2, N/4, …, 1** (repeatedly divide by 2), but _any_ sequence can be use, so long as the last gap equals 1. [*The Art of Computer Programming: Volume 3*](https://www.amazon.com/Art-Computer-Programming-Sorting-Searching/dp/0201896850/ref=sr_1_8?ie=UTF8&qid=1475027745&sr=8-8&keywords=The+art+of+Computer+Programming) (page 85) made a detailed description for how to choose a good sequence of increments for use in Shell Sort.
 
 ```
 SHELL-SORT(A)
@@ -94,7 +95,7 @@ SHELL-SORT(A)
 11    gap = gap / 2
 ```
 
-Download [src/visual_shell_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_shell_sort.py) and run it in Linux. You will see how shell sort works.
+Download [src/visual_shell_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_shell_sort.py) and run it in Linux. You will see how Shell Sort works.
 
 Run the command `python visual_shell_sort.py -n 50`, you will get the animation as follow.
 
@@ -119,10 +120,42 @@ SELECTION-SORT(A)
 
 ![selection_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/selection_sort.png)
 
-Download [src/visual_selection_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_selection_sort.py) and run it in Linux. You will see how selection sort works.
+Download [src/visual_selection_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_selection_sort.py) and run it in Linux. You will see how Selection Sort works.
 
 Run the command `python visual_selection_sort.py -n 50`, you will get the animation as follow.
 
 ![selection_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/selection_sort_50samples_fps30_dpi50.gif)
 
 Run `python visual_selection_sort.py -n 50 -o outputfile` to save the animation into a _output.gif_ file.
+
+## Merge Sort
+
+```
+MERGE(A, p, q, r)
+1   m = q - p + 1
+2   n = r - q
+3   let L[1..m + 1] and R[1..n + 1] be new arrays
+4   for i = 1 to m
+5       L[i] = A[p + i - 1]
+6   for j = 1 to n
+7       R[j] = A[q + j]
+8   L[m + 1] = ∞
+9   R[n + 1] = ∞
+10  i = 1
+11  j = 1
+12  for k = p to r
+13      if L[i] <= R[j]
+14          A[k] = L[i]
+15          i = i + 1
+16      else A[k] = R[j]
+17          j = j + 1
+```
+
+```
+MERGE-SORT(A, p, r)
+1   if p < r
+2       q = (p + r) / 2
+3       MERGE-SORT(A, p, q)
+4       MERGE-SORT(A, q + 1, r)
+5       MERGE(A, p, q, r)
+```
