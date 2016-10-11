@@ -22,10 +22,10 @@ As [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms
 ```
 BUBBLE-SORT(A)
 // A[1..n]
-1 for i = 1 to n - 1
-2     for j = n downto i + 1
-3         if A[j] < A[j - 1]
-4             exchange A[j] with A[j - 1]
+1   for i = 1 to n - 1
+2       for j = n downto i + 1
+3           if A[j] < A[j - 1]
+4               exchange A[j] with A[j - 1]
 ```
 
 Download [src/visual_bubble_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_bubble_sort.py) and run it in Linux. You will see how Bubble Sort works.
@@ -49,14 +49,14 @@ Insertion Sort is an efficient algorithm for sorting a small number of elements.
 ```
 INSERTION-SORT(A)
 // A[1..n]
-1 for j = 2 to n
-2     key = A[j]
-3     // Insert A[j] into the sorted sequence A[1..j - 1].
-4     i = j - 1
-5     while i > 0 and A[i] > key
-6         A[i + 1] = A[i]
-7         i = i - 1
-8     A[i + 1] = key
+1   for j = 2 to n
+2       key = A[j]
+3       // Insert A[j] into the sorted sequence A[1..j - 1].
+4       i = j - 1
+5       while i > 0 and A[i] > key
+6           A[i + 1] = A[i]
+7           i = i - 1
+8       A[i + 1] = key
 ```
 
 ![insertion_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/insertion_sort.png)
@@ -82,17 +82,17 @@ Shell Sort is also known as the "diminishing increment sort". It uses [Insertion
 ```
 SHELL-SORT(A)
 // A[1..n]
-1 gap = n / 2
-2 while gap >= 1
-3     for i = 1 to gap
-4         for j = i + gap to n step = gap    // Insertion Sort
-5             key = A[j]
-6             k = j - gap
-7             while k > 0 and A[k] > key
-8                 A[k + gap] = A[k]
-9                 k = k - gap
-10            A[k + gap] = key
-11    gap = gap / 2
+1   gap = n / 2
+2   while gap >= 1
+3       for i = 1 to gap
+4           for j = i + gap to n step = gap    // Insertion Sort
+5               key = A[j]
+6               k = j - gap
+7               while k > 0 and A[k] > key
+8                   A[k + gap] = A[k]
+9                   k = k - gap
+10              A[k + gap] = key
+11      gap = gap / 2
 ```
 
 Download [src/visual_shell_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_shell_sort.py) and run it in Linux. You will see how Shell Sort works.
@@ -110,12 +110,12 @@ Run `python visual_shell_sort.py -n 50 -o outputfile` to save the animation into
 ```
 SELECTION-SORT(A)
 // A[1..n]
-1 for i = 1 to n - 1
-2     indexOfMinElement = i
-3     for j = i + 1 to n
-4         if A[j] < A[indexOfMinElement]
-5             indexOfMinElement = j
-6     exchange A[i] with A[indexOfMinElement]
+1   for i = 1 to n - 1
+2       indexOfMinElement = i
+3       for j = i + 1 to n
+4           if A[j] < A[indexOfMinElement]
+5               indexOfMinElement = j
+6       exchange A[i] with A[indexOfMinElement]
 ```
 
 ![selection_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/selection_sort.png)
@@ -156,6 +156,8 @@ In Merge Sort algorithm, the key subroutine is MERGE(*A*, *p*, *q*, *r*). The fi
 > Figure is taken from [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) (Page 32 Figure 2.3 and Page 33 Figure 2.3, continued).
 
 *A* is an array and *p*, *q*, and *r* are indices into the array such that *p* <= *q* < *r*. The procedure assumes that the subarrays *A*[*p* .. *q*] and *A*[*q* + 1 .. *r*] are in sorted order. It _**merges**_ them to form a single sorted subarray that replaces the current subarray *A*[*p* .. *r*].
+
+Here we add ∞ behind both *L*[1 .. *m*] and *R*[1 .. *n*] subarrays as a _**sentinel**_ value, so that whenever an element with ∞ is exposed, it cannot be the smaller element unless both subarrays have their sentinel values exposed. But once that happens, all the nonsentinel elements have already been placed onto the array *A*[*p* .. *r*]. And we can stop the procedure at that time.
 
 ```
 MERGE(A, p, q, r)
