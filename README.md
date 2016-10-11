@@ -180,3 +180,31 @@ MERGE(A, p, q, r)
 17          j = j + 1
 ```
 
+There is not ∞ in programming language, such as Python, C and so on. Therefore, we rewrite the MERGE procedure so that it does not use sentinels, instead stopping once either array *L* or *R* has had all its elements copied back to *A* and then copying the remainder of the other array back into *A*.
+
+```
+MERGE(A, p, q, r)
+// Not use sentinel value
+1   m = q - p + 1
+2   n = r - q
+3   let L[1..m] and R[1..n] be new arrays
+4   i = 1
+5   j = 1
+6   k = p
+7   while i <= m and j <= n
+8       if L[i] <= R[j]
+9           A[k] = L[i]
+10          i = i + 1
+11          k = k + 1
+12      else A[k] = R[j]
+13          j = j + 1
+14          k = k + 1
+15  while i <= m
+16      A[k] = L[i]
+17      i = i + 1
+18      k = k + 1
+19  while j <= n
+20      A[k] = R[j]
+21      j = j + 1
+22      k = k + 1
+```
