@@ -131,6 +131,17 @@ Run `python visual_selection_sort.py -n 50 -o outputfile` to save the animation 
 ## Merge Sort
 
 ```
+MERGE-SORT(A, p, r)
+1   if p < r
+2       q = (p + r) / 2
+3       MERGE-SORT(A, p, q)
+4       MERGE-SORT(A, q + 1, r)
+5       MERGE(A, p, q, r)
+```
+
+![merge_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_sort.png)
+
+```
 MERGE(A, p, q, r)
 1   m = q - p + 1
 2   n = r - q
@@ -151,11 +162,4 @@ MERGE(A, p, q, r)
 17          j = j + 1
 ```
 
-```
-MERGE-SORT(A, p, r)
-1   if p < r
-2       q = (p + r) / 2
-3       MERGE-SORT(A, p, q)
-4       MERGE-SORT(A, q + 1, r)
-5       MERGE(A, p, q, r)
-```
+![merge](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge.png)
