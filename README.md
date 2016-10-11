@@ -130,6 +130,14 @@ Run `python visual_selection_sort.py -n 50 -o outputfile` to save the animation 
 
 ## Merge Sort
 
+Merge Sort is an effective algorithm which builds on merging operation. It closely follows the _**divide-and-conquer**_ paradigm (Check [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) page 30 2.3.1 to know *The divide-and-conquer approach*).
+
+First divide an array *A* into two new subarrays *L* and *R*, then separately divide *L* and *R* into another two new subarrays (four subarrays total), and so on. By recursively calling **MERGE-SORT** itself, the *n-element* sequence can be divided into *n* subsequences of 1 element each. Then call **MERGE** to combine *n* subsequences into a sorted sequence.
+
+![merge_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_sort.png)
+
+> Figure is taken from [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) (Page 35 Figure 2.4). The operation of merge sort on the array *A* = [5, 2, 4, 7, 1, 3, 2, 6]. The length of the sorted sequences being merged increase as the algorithm progresses from bottom to top.
+
 ```
 MERGE-SORT(A, p, r)
 1   if p < r
@@ -139,7 +147,11 @@ MERGE-SORT(A, p, r)
 5       MERGE(A, p, q, r)
 ```
 
-![merge_sort](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_sort.png)
+In Merge Sort algorithm, the key subroutine is **MERGE**. The figure below shows how to merge two sorted subarrays *L*[2, 4, 5, 7] and *R*[1, 2, 3, 6] to a sorted array *A*.
+
+![merge](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge.png)
+
+> Figure is taken from [*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) (Page 32 Figure 2.3 and Page 33 Figure 2.3, continued).
 
 ```
 MERGE(A, p, q, r)
@@ -162,4 +174,3 @@ MERGE(A, p, q, r)
 17          j = j + 1
 ```
 
-![merge](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge.png)
