@@ -208,3 +208,7 @@ MERGE(A, p, q, r)
 21      j = j + 1
 22      k = k + 1
 ```
+
+Here is an example to merge two sorted subarrays *L*[2, 4, 5, 7] and *R*[1, 2, 3, 6] to a sorted array *A* without using a sentinel value.
+
+![merge](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_without_sentinel.png)
