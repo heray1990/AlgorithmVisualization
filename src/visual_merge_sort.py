@@ -22,10 +22,6 @@ def merge(A, p, q, r):
         L.append(A[i].get_height())
     for i in range(q + 1, r + 1):
         R.append(A[i].get_height())
-    print('L:')
-    print(L)
-    print('R:')
-    print(R)
 
     i = 0
     j = 0
@@ -33,39 +29,49 @@ def merge(A, p, q, r):
 
     while i < len(L) and j < len(R):
         if L[i] < R[j]:
-            A[k].set_height(L[i])
+            #A[k].set_height(L[i])
+            yield k, L[i]
             i = i + 1
             k = k + 1
         else:
-            A[k].set_height(R[j])
+            #A[k].set_height(R[j])
+            yield k, R[j]
             j = j + 1
             k = k + 1
 
     while i < len(L):
-        A[k].set_height(L[i])
+        #A[k].set_height(L[i])
+        yield k, L[i]
         i = i + 1
         k = k + 1
 
     while j < len(R):
-        A[k].set_height(R[j])
+        #A[k].set_height(R[j])
+        yield k, R[j]
         j = j + 1
         k = k + 1
 
 def merge_sort(A, p, r):
     if p < r:
         q = (p + r) / 2
-        merge_sort(A, p, q)
-        merge_sort(A, q + 1, r)
-        merge(A, p, q, r)
+        for i in merge_sort(A, p, q):
+            yield i
+        for j in merge_sort(A, q + 1, r):
+            yield j
+        for k in merge(A, p, q, r):
+            yield k
 
 def index_gen():
-    merge_sort(rects, 0, samples - 1)
+    datas = merge_sort(rects, 0, samples - 1)
+    for data in datas:
+        yield data
 
 #def save_cnt_gen():
 
 def animate(data):
-    merge_sort(rects, 0, samples - 1)
-    #rects[data].set_color('y')
+    #print data
+    i, height = data
+    rects[i].set_height(height)
 
     return rects
 
@@ -105,7 +111,7 @@ see the animation or save it into <outputfile>.gif file.'''
     ypos = np.asarray(datalist)
     rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
     
-    ani = animation.FuncAnimation(fig, animate, frames=10, repeat=False,
+    ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
                                   init_func=init_animate, interval=50)
     if outputfile == '':
         plt.show()
