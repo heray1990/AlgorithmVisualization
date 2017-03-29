@@ -7,7 +7,6 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import matplotlib as mpl
 
 def init_animate():
     i = 0
@@ -159,7 +158,6 @@ see the animation or save it into <outputfile>.gif file.'''
         elif opt in ("-o", "--ofile"):
             outputfile = arg
 
-    mpl.verbose.set_level("helpful")
     fig, ax = plt.subplots()
     xpos = np.arange(0, samples)
     datalist = range(1, samples + 1)
@@ -174,6 +172,5 @@ see the animation or save it into <outputfile>.gif file.'''
     else:
         ani.save_count = save_cnt_gen()
         print ani.save_count
-        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
-        #writer = animation.ImageMagickFileWriter()
-        #ani.save('test.gif', writer=writer, fps=30, dpi=50)
+        ani.save(outputfile + '.mp4', writer='ffmpeg', fps=30, dpi=50)
+        #ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
