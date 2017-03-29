@@ -7,6 +7,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import matplotlib as mpl
 
 def init_animate():
     i = 0
@@ -66,8 +67,6 @@ def index_gen():
     for data in datas:
         yield data
 
-#def save_cnt_gen():
-
 def animate(data):
     #print data
     i, height, r = data
@@ -80,6 +79,57 @@ def animate(data):
 
     return rects
 
+class Counter():
+    num = 0
+
+def merge_for_cnt(A, p, q, r):
+    L = []
+    R = []
+
+    for i in range(p, q + 1):
+        L.append(A[i].get_height())
+    for i in range(q + 1, r + 1):
+        R.append(A[i].get_height())
+
+    i = 0
+    j = 0
+    k = p
+
+    while i < len(L) and j < len(R):
+        if L[i] < R[j]:
+            Counter.num += 1
+            #A[k].set_height(L[i])
+            i = i + 1
+            k = k + 1
+        else:
+            Counter.num += 1
+            #A[k].set_height(R[j])
+            j = j + 1
+            k = k + 1
+
+    while i < len(L):
+        Counter.num += 1
+        #A[k].set_height(L[i])
+        i = i + 1
+        k = k + 1
+
+    while j < len(R):
+        Counter.num += 1
+        #A[k].set_height(R[j])
+        j = j + 1
+        k = k + 1
+
+def merge_sort_for_cnt(A, p, r):
+    if p < r:
+        q = (p + r) / 2
+        merge_sort_for_cnt(A, p, q)
+        merge_sort_for_cnt(A, q + 1, r)
+        merge_for_cnt(A, p, q, r)
+
+def save_cnt_gen():
+    merge_sort_for_cnt(rects, 0, samples - 1)
+    return Counter.num
+
 if __name__ == '__main__':
     global samples, ypos, rects
 
@@ -89,7 +139,7 @@ if __name__ == '__main__':
     outputfile = ''
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile="])
+        opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile=", "verbose-debug"])
     except getopt.GetoptError:
         print '''Usage: python visual_merge_sort.py -n <number>
  or: python visual_merge_sort.py -n <number> -o <outputfile>
@@ -109,6 +159,7 @@ see the animation or save it into <outputfile>.gif file.'''
         elif opt in ("-o", "--ofile"):
             outputfile = arg
 
+    mpl.verbose.set_level("helpful")
     fig, ax = plt.subplots()
     xpos = np.arange(0, samples)
     datalist = range(1, samples + 1)
@@ -120,6 +171,9 @@ see the animation or save it into <outputfile>.gif file.'''
                                   init_func=init_animate, interval=50)
     if outputfile == '':
         plt.show()
-    #else:
-        #ani.save_count = save_cnt_gen()
-        #ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
+    else:
+        ani.save_count = save_cnt_gen()
+        print ani.save_count
+        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
+        #writer = animation.ImageMagickFileWriter()
+        #ani.save('test.gif', writer=writer, fps=30, dpi=50)
