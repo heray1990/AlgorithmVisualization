@@ -30,24 +30,24 @@ def merge(A, p, q, r):
     while i < len(L) and j < len(R):
         if L[i] < R[j]:
             #A[k].set_height(L[i])
-            yield k, L[i]
+            yield k, L[i], r
             i = i + 1
             k = k + 1
         else:
             #A[k].set_height(R[j])
-            yield k, R[j]
+            yield k, R[j], r
             j = j + 1
             k = k + 1
 
     while i < len(L):
         #A[k].set_height(L[i])
-        yield k, L[i]
+        yield k, L[i], r
         i = i + 1
         k = k + 1
 
     while j < len(R):
         #A[k].set_height(R[j])
-        yield k, R[j]
+        yield k, R[j], r
         j = j + 1
         k = k + 1
 
@@ -70,8 +70,13 @@ def index_gen():
 
 def animate(data):
     #print data
-    i, height = data
+    i, height, r = data
     rects[i].set_height(height)
+    rects[i].set_color('y')
+    if i > 0:
+        rects[i - 1].set_color('b')
+    if i == r:
+        rects[i].set_color('b')
 
     return rects
 
