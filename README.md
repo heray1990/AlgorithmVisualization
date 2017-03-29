@@ -214,3 +214,7 @@ Here is an example to merge two sorted subarrays *L*[2, 3, 4, 5] and *R*[1, 2, 6
 ![merge](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_without_sentinel.png)
 
 > In (g), array *L* has all its elements copied back to *A*. Therefore, in (h), copy the remainder (6 and 7) of array *R* back into *A* without comparison with array *L*.
+
+Run the command `python visual_merge_sort.py -n 50`, you will get the animation as follow.
+
+![merge_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_sort_50samples_fps30_dpi50.gif)
