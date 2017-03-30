@@ -19,23 +19,24 @@ def partition(A, p, q):
     i = p
  
     for j in range(p + 1, q + 1):
+        yield 0, j, 0
         if A[j].get_height() <= x:
             i = i + 1
-            yield j, i
+            yield 1, j, i
             #tmp = A[j].get_height()
             #A[j].set_height(A[i].get_height())
             #A[i].set_height(tmp)
 
     #A[p].set_height(A[i].get_height())
     #A[i].set_height(x)
-    yield p, i 
+    yield 2, p, i
     #return i
 
 def quick_sort(A, p, r):
     if p < r:
         for i in partition(A, p, r):
             yield i
-        q = i[1]
+        q = i[2]
         for j in quick_sort(A, p, q - 1):
             yield j
         for k in quick_sort(A, q + 1, r):
@@ -48,12 +49,19 @@ def index_gen():
 
 def animate(data):
     print data
-    i, j = data
+    flag, i, j = data
 
-    if not i == j:
+    if not i == j and flag > 0:
         tmp = rects[i].get_height()
         rects[i].set_height(rects[j].get_height())
         rects[j].set_height(tmp)
+
+    if flag == 0:
+        rects[i].set_color('y')
+        if i > 0:
+            rects[i - 1].set_color('b')
+    if flag == 2:
+        rects[j].set_color('b')
 
     return rects
 
@@ -105,7 +113,7 @@ see the animation or save it into <outputfile>.gif file.'''
     print tmp
     
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
-                                  init_func=init_animate, interval=50)
+                                  init_func=init_animate, interval=500)
     if outputfile == '':
         plt.show()
     else:
