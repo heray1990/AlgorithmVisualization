@@ -8,12 +8,15 @@
 - [Shell Sort](https://github.com/heray1990/AlgorithmVisualization#shell-sort)
 - [Selection Sort](https://github.com/heray1990/AlgorithmVisualization#selection-sort)
 - [Merge Sort](https://github.com/heray1990/AlgorithmVisualization#merge-sort)
+- [Quick Sort](https://github.com/heray1990/AlgorithmVisualization#quick-sort)
 
 ## System Requirement
 
 - Ubuntu
 - Python 2.7
 - matplotlib
+- ImagickMagic
+- FFMpeg
 
 ## Bubble Sort
 
@@ -222,3 +225,15 @@ Run the command `python visual_merge_sort.py -n 50`, you will get the animation 
 ![merge_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_sort_50samples_fps30_dpi50.gif)
 
 Run `python visual_merge_sort.py -n 50 -o outputfile` to save the animation into a _output.mp4_ file. Then you can convert it into _output.gif_ file by `ffmpeg -i output.mp4 output.gif`.
+
+## Quick Sort
+
+Quick Sort was proposed by C.A.R. Hoare in 1962. It, like Merge Sort, applies the 
+divide-and-conquer paradigm.
+
+Quick Sort an _**n**_-element array:
+
+1. _**Divide**_: Partition the array into two subarrays around a _**pivot**_ _**x**_ such that elements in lower subarray ≤ _**x**_ ≤ elements in upper subarray.
+![quick_sort_partition](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/quick_sort_partition.png)
+2. _**Conquer**_: Recursively sort the two subarrays.
+3. _**Combine**_: Trivial.
