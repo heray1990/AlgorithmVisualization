@@ -215,10 +215,10 @@ Here is an example to merge two sorted subarrays *L*[2, 3, 4, 5] and *R*[1, 2, 6
 
 > In (g), array *L* has all its elements copied back to *A*. Therefore, in (h), copy the remainder (6 and 7) of array *R* back into *A* without comparison with array *L*.
 
-Download [src/visual_merge_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_merge_sort.py) and run it in Linux. You will see how Shell Sort works.
+Download [src/visual_merge_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_merge_sort.py) and run it in Linux. You will see how Merge Sort works.
 
 Run the command `python visual_merge_sort.py -n 50`, you will get the animation as follow.
 
 ![merge_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/merge_sort_50samples_fps30_dpi50.gif)
 
-Run `python visual_merge_sort.py -n 50 -o outputfile` to save the animation into a _output.mp4_ file. Then you can convert it into _output.gif_ file.
+Run `python visual_merge_sort.py -n 50 -o outputfile` to save the animation into a _output.mp4_ file. Then you can convert it into _output.gif_ file by `ffmpeg -i output.mp4 output.gif`.
