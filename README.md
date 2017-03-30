@@ -237,3 +237,35 @@ Quick Sort an _**n**_-element array:
 ![quick_sort_partition](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/quick_sort_partition.png)
 2. _**Conquer**_: Recursively sort the two subarrays.
 3. _**Combine**_: Trivial.
+
+[*Introduction to Algorithms*](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844/ref=sr_1_1?ie=UTF8&qid=1474425705&sr=8-1&keywords=Introduction+to+Algorithms) Page 171 gives the implementation of quicksort:
+
+```
+QUICK-SORT(A, p, r)
+1   if p < r
+2       q = PARTITION(A, p, r)
+3       QUICK-SORT(A, p, q - 1)
+4       QUICK-SORT(A, q + 1, r)
+```
+
+The key to the algorithm is the PARTITION procedure, which rearranges the subarray *A*[*p* .. *q*] in place.
+
+```
+PARTITION(A, p, q)
+1   x = A[p]
+2   i = p
+3   for j = p + 1 to q
+4       if A[j] <= x
+5           i = i + 1
+6           exchange A[i] with A[j]
+7   exchange A[i] with A[p]
+8   return i
+```
+
+**Invariant**:
+
+![quick_sort_partition_invariant](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/quick_sort_partition_invariant.png)
+
+**Example of partitioning**:
+
+![quick_sort_partitioning](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/quick_sort_partitioning.gif)
