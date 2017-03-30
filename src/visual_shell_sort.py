@@ -126,7 +126,7 @@ if __name__ == '__main__':
     outputfile = ''
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile="])
+        opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile=", "verbose-debug"])
     except getopt.GetoptError:
         print '''Usage: python visual_shell_sort.py -n <number>
  or: python visual_shell_sort.py -n <number> -o <outputfile>
