@@ -64,28 +64,49 @@ def merge_sort(A, p, r):
 def index_gen():
     #initial frame
     yield 0, 0, 0
+
     datas = merge_sort(rects, 0, samples - 1)
     for data in datas:
         yield data
+
+    #last frame
+    yield -1, -1, -1
 
 def animate(data):
     print data
     i, height, r = data
 
+    #initial frame
     if i == 0 and height == 0 and r == 0:
+        return rects
+
+    #last frame
+    if i == -1 and height == -1 and r == -1:
+        rects[samples - 1].set_color('b')
         return rects
 
     rects[i].set_height(height)
     rects[i].set_color('y')
+
     if i > 0:
         rects[i - 1].set_color('b')
+
+    if Flag.readyToNewMerge:
+        Flag.readyToNewMerge = False
+        rects[Flag.lastIdx].set_color('b')
+
     if i == r:
-        rects[i].set_color('b')
+        Flag.readyToNewMerge = True
+        Flag.lastIdx = i
 
     return rects
 
+class Flag():
+    readyToNewMerge = False
+    lastIdx = 0
+
 class Counter():
-    num = 1
+    num = 2
 
 def merge_for_cnt(A, p, q, r):
     L = []
