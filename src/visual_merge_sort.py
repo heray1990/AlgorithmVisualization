@@ -62,7 +62,7 @@ def merge_sort(A, p, r):
             yield k
 
 def index_gen():
-    #initial frame
+    #first frame
     yield 0, 0, 0
 
     datas = merge_sort(rects, 0, samples - 1)
@@ -76,7 +76,7 @@ def animate(data):
     #print data
     i, height, r = data
 
-    #initial frame
+    #first frame
     if i == 0 and height == 0 and r == 0:
         return rects
 
