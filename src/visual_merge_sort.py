@@ -171,5 +171,5 @@ see the animation or save it into <outputfile>.gif file.'''
         plt.show()
     else:
         ani.save_count = save_cnt_gen()
-        ani.save(outputfile + '.mp4', writer='ffmpeg', fps=30, dpi=50)
-        #ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
+        #ani.save(outputfile + '.mp4', writer='ffmpeg', fps=30, dpi=50)
+        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
