@@ -14,16 +14,20 @@ def init_animate():
         i += 1
 
 def index_gen():
+    #first frame
+    yield -1, -1
+
     for i in range(0, (samples - 1)):
         yield i, 0
         for j in range((samples - 1), i, -1):
             yield j, 1
 
-    # A flag, represent the end of the sort.
     yield i, 2
+    #last frame 
+    yield i, 3
 
 def save_cnt_gen():
-    k = 1
+    k = 3
 
     for i in range(0, (samples - 1)):
         k += 1
@@ -34,6 +38,7 @@ def save_cnt_gen():
 
 def animate(data):
     i, flag = data
+
     if flag == 1:
         if rects[i - 1].get_height() > rects[i].get_height():
             tmp = rects[i - 1].get_height()
@@ -53,6 +58,11 @@ def animate(data):
     elif flag == 2:
         rects[samples - 2].set_color('b')
         rects[samples - 2].set_alpha(0.4)
+        rects[samples - 1].set_color('y')
+        rects[samples - 1].set_alpha(1)
+    elif flag == 3:
+        rects[samples - 1].set_color('b')
+        rects[samples - 1].set_alpha(0.4)
 
     return rects
 
@@ -98,4 +108,5 @@ see the animation or save it into <outputfile>.gif file.'''
         plt.show()
     else:
         ani.save_count = save_cnt_gen()
-        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
+        ani.save(outputfile + '.gif', writer='imagemagickfile', fps=30, dpi=50)
+        #ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
