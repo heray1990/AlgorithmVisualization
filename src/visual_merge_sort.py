@@ -73,7 +73,7 @@ def index_gen():
     yield -1, -1, -1
 
 def animate(data):
-    print data
+    #print data
     i, height, r = data
 
     #initial frame
@@ -191,10 +191,10 @@ see the animation or save it into <outputfile>.gif file.'''
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
     rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
-    tmp = []
-    for i in range(samples):
-        tmp.append(rects[i].get_height())
-    print tmp
+    #tmp = []
+    #for i in range(samples):
+    #    tmp.append(rects[i].get_height())
+    #print tmp
     
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
                                   init_func=init_animate, interval=50)
@@ -203,4 +203,5 @@ see the animation or save it into <outputfile>.gif file.'''
     else:
         ani.save_count = save_cnt_gen()
         #ani.save(outputfile + '.mp4', writer='ffmpeg', fps=30, dpi=50)
-        ani.save(outputfile + '.gif', writer='imagemagickfile', fps=30, dpi=50)
+        #ani.save(outputfile + '.gif', writer='imagemagickfile', fps=30, dpi=50)
+        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
