@@ -19,6 +19,9 @@ def index_gen():
     gap = samples / 2
     lastgap = 0
 
+    #first frame
+    yield -4, -4, -4, -4
+
     while gap >= 1:
         for i in range(0, gap):
             yield i, gap, lastgap, -1 
@@ -35,7 +38,7 @@ def index_gen():
         gap = gap / 2
 
 def save_cnt_gen():
-    m = 1 
+    m = 2
     k = 0
     gap = samples / 2
 
@@ -159,4 +162,5 @@ see the animation or save it into <outputfile>.gif file.'''
         plt.show()
     else:
         ani.save_count = save_cnt_gen()
+        #ani.save(outputfile + '.gif', writer='imagemagickfile', fps=30, dpi=50)
         ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
