@@ -15,6 +15,8 @@ def init_animate():
 
 def index_gen():
     i = 0
+    #first frame
+    yield -3, -3, -3
     for j in range(1, samples):
         key = rects[j].get_height()
         yield j, key, i + 1 
@@ -26,7 +28,7 @@ def index_gen():
     yield i, key, -2
 
 def save_cnt_gen():
-    k = 0
+    k = 1
 
     for j in range(1, samples):
         i = j - 1
@@ -51,6 +53,9 @@ def animate(data):
     elif flag == -2:
         rects[i + 1].set_color('b')
         rects[i + 1].set_alpha(0.4)
+    elif flag == -3:
+        #first frame
+        return rects
     else:
         if i > 1:
             rects[flag].set_color('b')
@@ -102,4 +107,5 @@ see the animation or save it into <outputfile>.gif file.'''
         plt.show()
     else:
         ani.save_count = save_cnt_gen()
+        #ani.save(outputfile + '.gif', writer='imagemagickfile', fps=30, dpi=50)
         ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
