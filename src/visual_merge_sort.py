@@ -185,12 +185,13 @@ see the animation or save it into <outputfile>.gif file.'''
         elif opt in ("-o", "--ofile"):
             outputfile = arg
 
-    fig, ax = plt.subplots()
+    fig, (ax1, ax2) = plt.subplots(1, 2)
     xpos = np.arange(0, samples)
     datalist = range(1, samples + 1)
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
-    rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
+    rects = ax1.bar(xpos, ypos, alpha=0.4, color='b')
+    rects2 = ax2.bar(xpos, ypos, alpha=0.4, color='b')
     #tmp = []
     #for i in range(samples):
     #    tmp.append(rects[i].get_height())
