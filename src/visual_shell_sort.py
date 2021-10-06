@@ -16,7 +16,7 @@ def init_animate():
 
 def index_gen():
     k = 0
-    gap = samples / 2
+    gap = int(samples / 2)
     lastgap = 0
 
     #first frame
@@ -35,12 +35,12 @@ def index_gen():
         if gap == 1:
             yield k, gap, key, -3
         lastgap = gap
-        gap = gap / 2
+        gap = int(gap / 2)
 
 def save_cnt_gen():
     m = 2
     k = 0
-    gap = samples / 2
+    gap = int(samples / 2)
 
     while gap >= 1:
         for i in range(0, gap):
@@ -51,7 +51,7 @@ def save_cnt_gen():
                 while k >= 0:
                     m += 1
                     k = k - gap
-        gap = gap / 2
+        gap = int(gap / 2)
 
     return m
 
@@ -131,18 +131,18 @@ if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile=", "verbose-debug"])
     except getopt.GetoptError:
-        print '''Usage: python visual_shell_sort.py -n <number>
+        print('''Usage: python visual_shell_sort.py -n <number>
  or: python visual_shell_sort.py -n <number> -o <outputfile>
 Generate a <number> samples barchart to show how shell sort works. To directly
-see the animation or save it into <outputfile>.gif file.'''
+see the animation or save it into <outputfile>.gif file.''')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print '''Usage: python visual_shell_sort.py -n <number>
+            print('''Usage: python visual_shell_sort.py -n <number>
  or: python visual_shell_sort.py -n <number> -o <outputfile>
 Generate a <number> samples barchart to show how shell sort works. To directly
-see the animation or save it into <outputfile>.gif file.'''
+see the animation or save it into <outputfile>.gif file.''')
             sys.exit()
         elif opt in ("-n", "--number"):
             samples = int(arg)
@@ -151,7 +151,7 @@ see the animation or save it into <outputfile>.gif file.'''
 
     fig, ax = plt.subplots()
     xpos = np.arange(0, samples)
-    datalist = range(1, samples + 1)
+    datalist = list(range(1, samples + 1))
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
     rects = ax.bar(xpos, ypos, alpha=0.4, color='b')

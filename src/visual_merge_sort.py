@@ -53,7 +53,7 @@ def merge(A, p, q, r):
 
 def merge_sort(A, p, r):
     if p < r:
-        q = (p + r) / 2
+        q = int((p + r) / 2)
         for i in merge_sort(A, p, q):
             yield i
         for j in merge_sort(A, q + 1, r):
@@ -147,7 +147,7 @@ def merge_for_cnt(A, p, q, r):
 
 def merge_sort_for_cnt(A, p, r):
     if p < r:
-        q = (p + r) / 2
+        q = int((p + r) / 2)
         merge_sort_for_cnt(A, p, q)
         merge_sort_for_cnt(A, q + 1, r)
         merge_for_cnt(A, p, q, r)
@@ -167,18 +167,18 @@ if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile=", "verbose-debug"])
     except getopt.GetoptError:
-        print '''Usage: python visual_merge_sort.py -n <number>
+        print('''Usage: python visual_merge_sort.py -n <number>
  or: python visual_merge_sort.py -n <number> -o <outputfile>
 Generate a <number> samples barchart to show how merge sort works. To directly
-see the animation or save it into <outputfile>.gif file.'''
+see the animation or save it into <outputfile>.gif file.''')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print '''Usage: python visual_merge_sort.py -n <number>
+            print('''Usage: python visual_merge_sort.py -n <number>
  or: python visual_merge_sort.py -n <number> -o <outputfile>
 Generate a <number> samples barchart to show how merge sort works. To directly
-see the animation or save it into <outputfile>.gif file.'''
+see the animation or save it into <outputfile>.gif file.''')
             sys.exit()
         elif opt in ("-n", "--number"):
             samples = int(arg)
@@ -187,7 +187,7 @@ see the animation or save it into <outputfile>.gif file.'''
 
     fig, (ax1, ax2) = plt.subplots(1, 2)
     xpos = np.arange(0, samples)
-    datalist = range(1, samples + 1)
+    datalist = list(range(1, samples + 1))
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
     rects = ax1.bar(xpos, ypos, alpha=0.4, color='b')

@@ -82,18 +82,18 @@ if __name__ == '__main__':
     try:
         opts, args = getopt.getopt(sys.argv[1:], "hn:o:", ["help", "number=", "ofile=", "verbose-debug"])
     except getopt.GetoptError:
-        print '''Usage: python visual_selection_sort.py -n <number>
+        print('''Usage: python visual_selection_sort.py -n <number>
  or: python visual_selection_sort.py -n <number> -o <outputfile>
 Generate a <number> samples barchart to show how selection sort works. To directly
-see the animation or save it into <outputfile>.gif file.'''
+see the animation or save it into <outputfile>.gif file.''')
         sys.exit(2)
 
     for opt, arg in opts:
         if opt in ("-h", "--help"):
-            print '''Usage: python visual_selection_sort.py -n <number>
+            print('''Usage: python visual_selection_sort.py -n <number>
  or: python visual_selection_sort.py -n <number> -o <outputfile>
 Generate a <number> samples barchart to show how selection sort works. To directly
-see the animation or save it into <outputfile>.gif file.'''
+see the animation or save it into <outputfile>.gif file.''')
             sys.exit()
         elif opt in ("-n", "--number"):
             samples = int(arg)
@@ -102,7 +102,7 @@ see the animation or save it into <outputfile>.gif file.'''
 
     fig, ax = plt.subplots()
     xpos = np.arange(0, samples)
-    datalist = range(1, samples + 1)
+    datalist = list(range(1, samples + 1))
     random.shuffle(datalist)
     ypos = np.asarray(datalist)
     rects = ax.bar(xpos, ypos, alpha=0.4, color='b')
