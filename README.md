@@ -15,7 +15,7 @@
 - Ubuntu or Windows
 - Python 3.9.5
 - matplotlib
-- [ImagickMagic]([ImageMagick – Download](https://imagemagick.org/script/download.php))
+- [ImagickMagic](https://imagemagick.org/script/download.php)
 - FFMpeg
 
 ## Bubble Sort
