@@ -12,10 +12,10 @@
 
 ## System Requirement
 
-- Ubuntu
-- Python 2.7
+- Ubuntu or Windows
+- Python 3.9.5
 - matplotlib
-- ImagickMagic
+- [ImagickMagic]([ImageMagick – Download](https://imagemagick.org/script/download.php))
 - FFMpeg
 
 ## Bubble Sort
