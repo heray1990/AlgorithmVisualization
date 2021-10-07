@@ -18,7 +18,6 @@ def partition(A, p, q):
     x = A[p].get_height()
     i = p
  
-    yield 0, p + 1, i, p, q
     for j in range(p + 1, q + 1):
         yield 0, j, i, p, q
         if A[j].get_height() <= x:
@@ -39,6 +38,9 @@ def quick_sort(A, p, r):
             yield data2
 
 def index_gen():
+    #first frame
+    yield 0, 0, 0, 0, 0
+
     datas = quick_sort(rects, 0, samples - 1)
     for data in datas:
         yield data
@@ -50,6 +52,10 @@ def animate(data):
     #   2: exchange and finish current partition
     flag, j, i, p, q = data
     #print(data)
+
+    #first frame
+    if flag + j + i + p + q == 0:
+        return rects
 
     rects[p].set_color('y')
 
@@ -82,8 +88,28 @@ def animate(data):
 class Counter():
     num = 0
 
+def partition_for_cnt(A, p, q):
+    x = A[p].get_height()
+    i = p
+
+    for j in range(p + 1, q + 1):
+        Counter.num += 1
+        if A[j].get_height() <= x:
+            Counter.num += 1
+            i = i + 1
+
+    Counter.num += 1
+    return i
+
+def quick_sort_for_cnt(A, p, r):
+    if p < r:
+        q =  partition_for_cnt(A, p, r)
+        quick_sort_for_cnt(A, p, q - 1)
+        quick_sort_for_cnt(A, q + 1, r)
+
 def save_cnt_gen():
-    #merge_sort_for_cnt(rects, 0, samples - 1)
+    quick_sort_for_cnt(rects, 0, samples - 1)
+    print(Counter.num)
     return Counter.num
 
 if __name__ == '__main__':
@@ -127,10 +153,10 @@ see the animation or save it into <outputfile>.gif file.''')
     #print(tmp)
 
     ani = animation.FuncAnimation(fig, animate, frames=index_gen, repeat=False,
-                                  init_func=init_animate, interval=500)
+                                  init_func=init_animate, interval=50)
     if outputfile == '':
         plt.show()
     else:
         ani.save_count = save_cnt_gen()
-        ani.save(outputfile + '.mp4', writer='ffmpeg', fps=30, dpi=50)
-        #ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)
+        #ani.save(outputfile + '.mp4', writer='ffmpeg', fps=30, dpi=50)
+        ani.save(outputfile + '.gif', writer='imagemagick', fps=30, dpi=50)

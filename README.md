@@ -269,3 +269,11 @@ PARTITION(A, p, q)
 **Example of partitioning**:
 
 ![quick_sort_partitioning](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/quick_sort_partitioning.gif)
+
+Download [src/visual_quick_sort.py](https://github.com/heray1990/AlgorithmVisualization/blob/master/src/visual_quick_sort.py) and run it in Linux. You will see how Quick Sort works.
+
+Run the command `python visual_quick_sort.py -n 50`, you will get the animation as follow.
+
+![quick_sort_50samples_fps30_dpi50](https://raw.githubusercontent.com/heray1990/AlgorithmVisualization/master/images/quick_sort_50samples_fps30_dpi50.gif)
+
+Run `python visual_quick_sort.py -n 50 -o outputfile` to save the animation into a _output.gif_ file.
