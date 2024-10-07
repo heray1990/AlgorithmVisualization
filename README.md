@@ -12,11 +12,11 @@
 
 ## System Requirement
 
-- Ubuntu or Windows
+- [Ubuntu](https://ubuntu.com/) or Windows
 - Python 3.9.5
-- matplotlib
+- [matplotlib](https://github.com/matplotlib/matplotlib)
 - [ImagickMagic](https://imagemagick.org/script/download.php)
-- FFMpeg
+- [FFMpeg](https://github.com/FFmpeg/FFmpeg)
 
 ## Bubble Sort
 
